@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import 'antd/dist/antd.css'
-import { Input, Button, List } from 'antd'
 import store from './store'
 // import { CHANGE_INPUT , ADD_ITEM , DELETE_ITEM } from './store/actionTypes'
-import {changeInputAction, addItemAction, deleteItemAction} from './store/actionCreatores'
+import {changeInputAction, addItemAction, deleteItemAction, getItemAction} from './store/actionCreatores'
+import TodoListUI from './TodoListUI'
+import axios from 'axios'
 
 
 export default class TodoList extends Component {
@@ -17,7 +17,7 @@ export default class TodoList extends Component {
         this.storeChange = this.storeChange.bind(this)
         store.subscribe(this.storeChange) //订阅Redux的状态
         this.clickBtn = this.clickBtn.bind(this)
-        // this.deleteItem = this.deleteItem.bind(this)
+        this.deleteItem = this.deleteItem.bind(this)
         
     }
 
@@ -59,21 +59,23 @@ export default class TodoList extends Component {
     render() {
         return (
             <div>
-                <Input placeholder={this.state.inputValue} 
-                style={{ width:'250px', marginRight:'10px'}}
-                onChange={this.changeInputValue}
-                ></Input>
-                <Button type="primary" onClick={this.clickBtn}>增加</Button>
-                <div style={{margin:'10px',width:'300px'}}>
-                <List
-                        bordered
-                        //关键代码-----------start
-                        dataSource={this.state.list}
-                        //关键代码-----------end
-                        renderItem={(item,index)=>(<List.Item onClick={this.deleteItem.bind(this,index)}>{item}</List.Item>)}
-                    />  
-                </div>
+               <TodoListUI
+                inputValue={this.state.inputValue}
+                list={this.state.list}
+                changeInputValue={this.changeInputValue}
+                clickBtn={this.clickBtn}
+                deleteItem={this.deleteItem}
+               ></TodoListUI>
             </div>
         )
+    }
+
+    componentDidMount(){
+        axios.get('https://www.studyinghome.com/mock/5e5c821883482d5224c00347/list').then((res)=>{
+            console.log(res)
+            const action =  getItemAction(res.data)
+
+            store.dispatch(action)
+        })
     }
 }
