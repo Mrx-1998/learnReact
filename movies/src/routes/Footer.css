@@ -1,0 +1,48 @@
+footer{
+    width: 100%;
+    height: 105px;
+    background: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.selectNum{
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: auto;
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+/* 取消滚动条 */
+.selectNum::-webkit-scrollbar{
+    display: none;
+}
+ul{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+ul li{
+    width: 84px;
+    height: 38px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    margin: 5px;
+}
+.selector{
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    color: #fff;
+    background: #ff2e62;
+    font-size: 18px;
+    font-weight: 900;
+}
