@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 // import Demo1 from './component/useState/indexHook'
 // import Demo2 from './component/useEffect/makeUnmount'
 // import Demo3 from './component/useContext/indexHook'
-import Demo3 from './component/useMemo'
+import Demo3 from './component/useRef/example'
 
 
 
