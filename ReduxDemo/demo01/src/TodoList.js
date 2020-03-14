@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import store from './store'
 // import { CHANGE_INPUT , ADD_ITEM , DELETE_ITEM } from './store/actionTypes'
-import {changeInputAction, addItemAction, deleteItemAction, getItemAction} from './store/actionCreatores'
+import {changeInputAction, addItemAction, deleteItemAction, getTodoList} from './store/actionCreatores'
 import TodoListUI from './TodoListUI'
-import axios from 'axios'
 
 
 export default class TodoList extends Component {
@@ -71,11 +70,12 @@ export default class TodoList extends Component {
     }
 
     componentDidMount(){
-        axios.get('https://www.studyinghome.com/mock/5e5c821883482d5224c00347/list').then((res)=>{
-            console.log(res)
-            const action =  getItemAction(res.data)
-
-            store.dispatch(action)
-        })
+        // axios.get('https://www.studyinghome.com/mock/5e5c821883482d5224c00347/list').then((res)=>{
+        //     console.log(res,'-----------------------------res')
+        //     const action =  getItemAction(res.data)
+        //     store.dispatch(action)
+        // })
+        const action = getTodoList()
+        store.dispatch(action)
     }
 }
