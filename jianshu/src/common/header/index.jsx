@@ -58,9 +58,10 @@ const Header = (props) => {
     )
 }
 
+//把store里数据映射到state去
 const mapStateToProps = (state) => {
     return {
-        focused: state.focused
+        focused: state.header.focused
     }
 }
 //store.dispatch ===> props
