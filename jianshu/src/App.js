@@ -2,11 +2,18 @@ import React from 'react';
 import Header from './common/header'
 import store from './store/index'
 import {Provider} from 'react-redux' 
+import { Route , BrowserRouter} from 'react-router-dom'
+import Home from './pages/home'
+import Detail from './pages/detail'
 
 function App() {
   return (
     <Provider store={store}>
-      <Header></Header>
+      <Header />
+      <BrowserRouter>
+        <Route exact path="/" component={Home}></Route>
+        <Route path="/detail" component={Detail}></Route>
+      </BrowserRouter>
     </Provider>   
   )  
 }

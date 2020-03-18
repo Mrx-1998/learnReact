@@ -1,6 +1,7 @@
 import React from 'react'
 import { CSSTransition } from 'react-transition-group'
 import {connect} from 'react-redux'
+import  { actionCreators }  from './store'
 import {
     HeaderWrapper, 
     Logo, 
@@ -49,6 +50,7 @@ const Header = (props) => {
             <Addition>
                 <Button className="writting">
                     <span className="iconfont">&#xe62e;</span>
+                    写文章
                 </Button>
                 <Button className="reg">
                     注册
@@ -61,7 +63,7 @@ const Header = (props) => {
 //把store里数据映射到state去
 const mapStateToProps = (state) => {
     return {
-        focused: state.header.focused
+        focused: state.header.get('focused') //immutable数据调用要用get
     }
 }
 //store.dispatch ===> props
@@ -69,17 +71,11 @@ const mapDispatchToProps = (dispatch) => {
     return {
         handleInputFocus() {
             // console.log('123');
-            const action = {
-                type: 'search_foucs'
-            }
-            dispatch(action)           
+            dispatch(actionCreators.searchFocus())           
         },
 
         handleBlur() {
-            const action = {
-                type: 'search_blur'
-            }
-            dispatch(action) 
+            dispatch(actionCreators.searchBlur()) 
         }
     }
 }
