@@ -1,6 +1,7 @@
 import React from 'react'
 import { CSSTransition } from 'react-transition-group'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import  { actionCreators }  from './store'
 import {
     HeaderWrapper, 
@@ -18,9 +19,9 @@ const Header = (props) => {
         <HeaderWrapper>
             <Logo />
             <Nav>
-                <NavItem className="left active">
+                <NavItem className="left">
                     <span className="iconfont">&#xe60a;</span>
-                    首页
+                    <a href="/" className="active">首页</a>
                 </NavItem>
                 <NavItem className="left">
                     <span className="iconfont">&#xe6d4;</span>

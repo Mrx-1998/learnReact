@@ -12,7 +12,7 @@ function App() {
       <Header />
       <BrowserRouter>
         <Route exact path="/" component={Home}></Route>
-        <Route path="/detail" component={Detail}></Route>
+        <Route exact path="/detail/:id" component={Detail}></Route>
       </BrowserRouter>
     </Provider>   
   )  
